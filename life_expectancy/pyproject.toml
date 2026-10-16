@@ -1,5 +1,5 @@
 [project]
-name = "life_expectancy_pkg"
+name = "life_expectancy"
 version = "0.1.0"
 authors=[
 	{name = "Fernando Cordeiro<fernando@daredata.engineering>"},

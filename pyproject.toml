@@ -1,5 +1,5 @@
 [project]
-name = "life_expectancy"
+name = "assignments"
 version = "0.1.0"
 authors=[
 	{name = "Fernando Cordeiro<fernando@daredata.engineering>"},

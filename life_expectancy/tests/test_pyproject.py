@@ -39,7 +39,8 @@ def test_pyproject():
         if not author["name"].startswith("Fernando Cordeiro"):
             has_new_author = True
 
-    assert pyproject["project"]["name"] == "life_expectancy"
+    # I want to use uv with two pyproject.toml files, sorry
+    assert pyproject["project"]["name"] == "assignments"
     assert has_new_author, (
         "The author of the package is not Fernando Cordeiro. You should "
         "add your own name to the pyproject.toml file."
