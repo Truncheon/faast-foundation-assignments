@@ -1,13 +1,11 @@
 from pathlib import Path
 
-import numpy as np
 import pandas as pd
-
 
 DATA_FOLDER = Path(__file__).parent / "data"
 
 
-def clean_data():
+def load_data():
     df = pd.read_csv(DATA_FOLDER / "eu_life_expectancy_raw.tsv", sep="\t")
 
     BIG_COLUMN = "unit,sex,age,geo\\time"
@@ -22,6 +20,11 @@ def clean_data():
     )
     df["year"] = df["year"].apply(lambda x: int(x.rstrip()))
 
+    return df
+
+
+def clean_data(df: pd.DataFrame):
+
     def _safe_float_cast(x):
         for c in [" ", "e", "p", "b", ":"]:
             x = x.replace(c, "")
@@ -34,7 +37,8 @@ def clean_data():
     df["value"] = df["value"].apply(_safe_float_cast).astype("Float64")
     df.dropna(subset=["value"], inplace=True)
 
-    df.to_csv(DATA_FOLDER / "pt_life_expectancy.csv", index=False)
+    return df
 
 
-clean_data()
+def save_data(df: pd.DataFrame, path=DATA_FOLDER / "pt_life_expectancy.csv"):
+    df.to_csv(path, index=False)
